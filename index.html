@@ -89,13 +89,8 @@
         }).then((unityInstance) => {
           unityI=unityInstance;
           //������ ����
-          YaGames.init()
-          .then(ysdk => {
-                console.log('YAsdk initialized');
-                ysdk.features.LoadingAPI?.ready();
-                window.ysdk=ysdk;
-                initPlayer();
-          })
+          var rParams = FAPI.Util.getRequestParameters();
+          FAPI.init(rParams["api_server"], rParams["apiconnection"], initPlayer());
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
@@ -110,23 +105,8 @@
       var lb;
 
       function initPlayer(){
-        ysdk.getPlayer({scopes:false}).then(_player => {
-                player = _player;
-                var data = player.getName();
-                unityI.SendMessage('YandexSDK', 'AuthenticateSuccess', data);
-                ysdk.getPayments({ signed: true }).then(_payments => {
-                    // ������� ��������.
-                    payments = _payments;
-                    //�������� �������������� �������
-                    payments.getPurchases().then(purchases => {
-                        if (purchases.some(purchase => purchase.productID === 'turnOffAd')) {
-                            unityI.SendMessage('YandexSDK', 'TurnOffAd');
-                        }
-                        else showFullscrenAd();
-                        purchases.forEach(consumePurchase)
-                    });
-                });
-      });}
+        FAPI.invokeUIMethod("showBannerAds", "top");
+      }
 
       function consumePurchase(purchase) {
         if (purchase.productID!='turnOffAd') {
