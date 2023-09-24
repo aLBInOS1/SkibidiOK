@@ -98,14 +98,15 @@
       };
       document.body.appendChild(script);
     </script>
-    <script src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
+    <script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
     <script>
       var player;
       var payments = null;
       var lb;
 
       function initPlayer(){
-        FAPI.invokeUIMethod("showBannerAds", "top");
+      console.log("initialized");
+        //FAPI.invokeUIMethod("showBannerAds", "top");
       }
 
       function consumePurchase(purchase) {
