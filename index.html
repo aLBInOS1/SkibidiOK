@@ -91,7 +91,7 @@
           //������ ����
           var rParams = FAPI.Util.getRequestParameters();
           FAPI.init(rParams["api_server"], rParams["apiconnection"], initPlayer(),
-          function() {
+          function(error) {
             console.log("init failed");
           });
           loadingBar.style.display = "none";
