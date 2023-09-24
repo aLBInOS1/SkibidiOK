@@ -93,7 +93,7 @@
           FAPI.init(rParams["api_server"], rParams["apiconnection"],
           function initPlayer(){
             console.log("initialized");
-            FAPI.invokeUIMethod("showBannerAds", "top");
+            FAPI.invokeUIMethod("requestBannerAds");
           },
           function(error) {
             console.log("init failed");
@@ -115,6 +115,8 @@
       {
         var str = "{ \"method\": \"" + method + "\", \"result\": \"" + result + "\", \"data\": \"" + data + "\",}";
         console.log(str);
+
+        if (method=="requestBannerAds"&&result=="ok") FAPI.invokeUIMethod("showBannerAds");
 
         //gameInstance.SendMessage(*gameObjectName*, *methodName*, str);
       }
