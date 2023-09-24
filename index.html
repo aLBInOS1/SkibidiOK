@@ -146,9 +146,12 @@
   function setUserData(_data){
       if (player!=null) {
           console.log('Try Save:'+_data);
-          player.setData({data : _data}).then(()=>{
-            console.log('saved');
-          }).catch(()=>{console.log('unsaved')});
+          FAPI.invokeUIMethod("storage.set", {key:'coins', value:100},
+          function (response) {
+            console.log("saved!");
+          } else {
+            console.log("unsaved!");
+          });
       }
     }
 
