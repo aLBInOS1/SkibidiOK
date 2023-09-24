@@ -90,7 +90,10 @@
           unityI=unityInstance;
           //������ ����
           var rParams = FAPI.Util.getRequestParameters();
-          FAPI.init(rParams["api_server"], rParams["apiconnection"], initPlayer());
+          FAPI.init(rParams["api_server"], rParams["apiconnection"], initPlayer(),
+          function() {
+            console.log("init failed");
+          });
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
