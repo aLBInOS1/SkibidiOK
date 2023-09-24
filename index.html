@@ -90,7 +90,11 @@
           unityI=unityInstance;
           //������ ����
           var rParams = FAPI.Util.getRequestParameters();
-          FAPI.init(rParams["api_server"], rParams["apiconnection"], initPlayer(),
+          FAPI.init(rParams["api_server"], rParams["apiconnection"],
+          function initPlayer(){
+            console.log("initialized");
+            FAPI.invokeUIMethod("showBannerAds", "top");
+          },
           function(error) {
             console.log("init failed");
           });
@@ -106,11 +110,6 @@
       var player;
       var payments = null;
       var lb;
-
-      function initPlayer(){
-        console.log("initialized");
-        FAPI.invokeUIMethod("showBannerAds", "top");
-      }
 
       function consumePurchase(purchase) {
         if (purchase.productID!='turnOffAd') {
