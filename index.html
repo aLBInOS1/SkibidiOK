@@ -111,6 +111,14 @@
       var payments = null;
       var lb;
 
+      function API_callback(method, result, data)
+      {
+        var str = "{ \"method\": \"" + method + "\", \"result\": \"" + result + "\", \"data\": \"" + data + "\",}";
+        console.log(str);
+
+        //gameInstance.SendMessage(*gameObjectName*, *methodName*, str);
+      }
+
       function consumePurchase(purchase) {
         if (purchase.productID!='turnOffAd') {
             unityI.SendMessage('YandexSDK','DonateDoned',purchase.productID);
