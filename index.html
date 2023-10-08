@@ -144,13 +144,11 @@
     }
 
   function setUserData(_data){
-      if (player!=null) {
-          console.log('Try Save:'+_data);
-          FAPI.invokeUIMethod("storage.set", {"coins":100},
-          function status (response) {
-            console.log("saved!");
-          });
-      }
+        console.log('Try Save:'+_data);
+        FAPI.invokeUIMethod("storage.set", _data,
+        function status (response) {
+        console.log("saved!");
+        });
     }
 
       function showFullscrenAd(){
