@@ -147,10 +147,8 @@
       if (player!=null) {
           console.log('Try Save:'+_data);
           FAPI.invokeUIMethod("storage.set", {"coins":100},
-          function (response) {
+          function status (response) {
             console.log("saved!");
-          } else {
-            console.log("unsaved!");
           });
       }
     }
