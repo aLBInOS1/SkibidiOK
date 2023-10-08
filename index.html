@@ -99,7 +99,7 @@
 
       function API_callback(method, result, data)
       {
-        var str = "{ \"method\": \"" + method + "\", \"result\": \"" + result + "\", \"data\": \"" + data + "\",}";
+        var str = "{\"method\": \"" + method + "\", \"result\": \"" + result + "\", \"data\": \"" + data + "\"}";
         console.log(str);
 
         if (method=="requestBannerAds"&&result=="ok") FAPI.invokeUIMethod("showBannerAds");
